@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+<title>For Bhoomi 🌷</title>
+
+<meta name="theme-color" content="#211a20">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+*{
+    box-sizing:border-box;
+}
+
+html,body{
+    margin:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+body{
+    font-family:"DM Sans",sans-serif;
+    color:#34252d;
+    background:#fff8f7;
+}
+
+/* MAIN APP */
+
+.app{
+    width:100%;
+    height:100svh;
+    position:relative;
+    overflow:hidden;
+}
+
+/* PAGES */
+
+.page{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    padding:70px 22px 92px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    opacity:0;
+    visibility:hidden;
+
+    transform:translateX(35px) scale(.98);
+
+    transition:
+        opacity .55s ease,
+        transform .55s ease;
+
+    overflow:hidden;
+}
+
+.page.active{
+    opacity:1;
+    visibility:visible;
+    transform:translateX(0) scale(1);
+    z-index:2;
+}
+
+.page.prev{
+    transform:translateX(-35px) scale(.98);
+}
+
+/* CONTENT */
+
+.content{
+    width:min(760px,100%);
+    max-height:100%;
+    overflow:auto;
+    scrollbar-width:none;
+}
+
+.content::-webkit-scrollbar{
+    display:none;
+}
+
+/* TEXT */
+
+h1,h2{
+    font-family:"Cormorant Garamond",serif;
+    line-height:.94;
+    margin:10px 0 20px;
+}
+
+h1{
+    font-size:clamp(4rem,17vw,8rem);
+}
+
+h2{
+    font-size:clamp(3rem,11vw,6rem);
+}
+
+p{
+    font-size:clamp(.92rem,3.8vw,1.05rem);
+    line-height:1.8;
+    max-width:680px;
+    margin:13px auto;
+}
+
+.eyebrow{
+    font-size:.62rem;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    opacity:.65;
+}
+
+.quote{
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(1.35rem,5.5vw,1.8rem);
+    line-height:1.35;
+}
+
+/* BACKGROUNDS */
+
+.hero{
+    color:#fff;
+
+    background:
+        radial-gradient(
+            circle at 50% 38%,
+            #684550,
+            #2a2028 48%,
+            #120e13
+        );
+}
+
+.light{
+    background:
+        linear-gradient(
+            135deg,
+            #fffaf8,
+            #f8eaf0
+        );
+}
+
+.dark{
+    color:#fff;
+    background:#211a20;
+}
+
+.final{
+    color:#fff;
+
+    background:
+        radial-gradient(
+            circle at 50% 42%,
+            #694550,
+            #261b22 65%,
+            #120e13
+        );
+}
+
+/* BUTTON */
+
+.btn{
+    border:1px solid currentColor;
+    background:transparent;
+    color:inherit;
+
+    border-radius:999px;
+
+    padding:14px 24px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    margin-top:18px;
+
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+    background:#ffffff14;
+}
+
+/* NAVIGATION */
+
+.nav{
+    position:fixed;
+
+    z-index:20;
+
+    bottom:
+        calc(
+            15px +
+            env(safe-area-inset-bottom)
+        );
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    width:min(94%,430px);
+
+    justify-content:center;
+}
+
+.nav button{
+    border:1px solid #ffffff35;
+
+    background:#251b22e8;
+
+    color:#fff;
+
+    border-radius:999px;
+
+    padding:11px 18px;
+
+    backdrop-filter:blur(12px);
+
+    cursor:pointer;
+
+    font-weight:600;
+}
+
+.counter{
+    font-size:.72rem;
+
+    letter-spacing:2px;
+
+    color:#fff;
+
+    background:#251b22c9;
+
+    padding:9px 13px;
+
+    border-radius:999px;
+}
+
+/* DOTS */
+
+.dots{
+    position:fixed;
+
+    z-index:20;
+
+    top:18px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    display:flex;
+
+    gap:6px;
+}
+
+.dot{
+    width:6px;
+    height:6px;
+
+    border-radius:50%;
+
+    background:#ffffff55;
+
+    transition:.3s;
+}
+
+.dot.active{
+    width:20px;
+
+    border-radius:9px;
+
+    background:#fff;
+}
+
+/* STORY CARDS */
+
+.story{
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:12px;
+
+    margin:24px auto;
+
+    max-width:700px;
+}
+
+.tile{
+    padding:19px;
+
+    border:
+        1px solid
+        #ead9df;
+
+    border-radius:21px;
+
+    background:#ffffffaa;
+
+    text-align:left;
+}
+
+.tile b{
+    color:#835365;
+}
+
+/* ENVELOPE */
+
+.envelope-wrap{
+    height:190px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    perspective:800px;
+}
+
+.envelope{
+    width:245px;
+    height:150px;
+
+    background:#f2c4d2;
+
+    border-radius:8px;
+
+    position:relative;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 22px 50px #0003;
+}
+
+.envelope:before{
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:#e7aabd;
+
+    clip-path:
+        polygon(
+            0 0,
+            50% 60%,
+            100% 0
+        );
+
+    transform-origin:top;
+
+    transition:.8s;
+
+    z-index:3;
+}
+
+.envelope.open:before{
+    transform:rotateX(180deg);
+}
+
+.seal{
+    position:absolute;
+
+    z-index:4;
+
+    left:50%;
+    top:58%;
+
+    transform:
+        translate(-50%,-50%);
+
+    font-size:1.8rem;
+}
+
+/* LETTER */
+
+.letter{
+    max-height:0;
+
+    overflow:hidden;
+
+    opacity:0;
+
+    transition:1s;
+}
+
+.letter.open{
+    max-height:500px;
+
+    opacity:1;
+}
+
+.paper{
+    background:#fffdf9;
+
+    color:#59434c;
+
+    border-radius:24px;
+
+    padding:25px;
+
+    box-shadow:
+        0 18px 55px #0002;
+}
+
+/* FLOWER */
+
+.flower{
+    width:min(310px,75vw);
+
+    height:min(310px,75vw);
+
+    margin:22px auto;
+
+    border-radius:50%;
+
+    overflow:hidden;
+
+    border:8px solid white;
+
+    box-shadow:
+        0 25px 65px #70465530;
+}
+
+.flower img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+}
+
+/* SPECIAL MESSAGE */
+
+.eyes{
+    background:
+        linear-gradient(
+            135deg,
+            #fff,
+            #faeaf0
+        );
+
+    padding:27px;
+
+    border-radius:27px;
+
+    margin-top:22px;
+}
+
+/* FUNNY BADGES */
+
+.badges{
+    display:flex;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:9px;
+
+    margin:25px auto;
+}
+
+.badge{
+    padding:11px 15px;
+
+    border-radius:999px;
+
+    background:#ffffff12;
+
+    border:
+        1px solid
+        #ffffff1c;
+
+    font-size:.86rem;
+}
+
+.badge b{
+    color:#f1bccb;
+}
+
+/* HEART */
+
+.heart{
+    font-size:4rem;
+
+    animation:
+        pulse 1.8s infinite;
+}
+
+@keyframes pulse{
+    50%{
+        transform:scale(1.12);
+    }
+}
+
+/* FALLING PETALS */
+
+.petals span{
+    position:fixed;
+
+    top:-30px;
+
+    z-index:10;
+
+    pointer-events:none;
+
+    opacity:.55;
+
+    animation:
+        fall linear infinite;
+}
+
+@keyframes fall{
+
+    to{
+        transform:
+            translate3d(
+                var(--x),
+                110vh,
+                0
+            )
+            rotate(400deg);
+    }
+
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    .page{
+        padding:
+            55px 18px 88px;
+    }
+
+    .story{
+        grid-template-columns:1fr;
+    }
+
+    .tile{
+        text-align:center;
+        padding:15px;
+    }
+
+    p{
+        line-height:1.65;
+    }
+
+    .content{
+        max-height:
+            calc(
+                100svh - 130px
+            );
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- PAGE DOTS -->
+    <div class="dots" id="dots"></div>
+
+    <!-- FALLING PETALS -->
+    <div class="petals" id="petals"></div>
+
+
+    <!-- PAGE 1 -->
+
+    <section class="page hero active">
+
+        <div class="content">
+
+            <div class="eyebrow">
+                a little world made for one special person
+            </div>
+
+            <h1>
+                Bhoomi.
+            </h1>
+
+            <p class="quote">
+                “Some people enter your life as friends…
+                and quietly become family.”
+            </p>
+
+            <p>
+                There is something I made especially for you.
+            </p>
+
+            <button
+                class="btn"
+                onclick="next()"
+            >
+                Open your surprise 💌
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- PAGE 2 -->
+
+    <section class="page light">
+
+        <div class="content">
+
+            <div class="eyebrow">
+                01 · one year
+            </div>
+
+            <h2>
+                One year.<br>
+                So many little things.
+            </h2>
+
+            <p>
+                One year ago, college introduced me to you.
+                I didn't know that somewhere between random
+                conversations, jokes, advice and everyday chaos,
+                I'd find someone who would become like a sister to me.
+            </p>
+
+            <div class="story">
+
+                <div class="tile">
+                    <b>🌱 The beginning</b>
+                    <br>
+                    We met without knowing where this friendship
+                    would go.
+                </div>
+
+                <div class="tile">
+                    <b>😂 The chaos</b>
+                    <br>
+                    Somehow ordinary moments became memories.
+                </div>
+
+                <div class="tile">
+                    <b>🫂 The understanding</b>
+                    <br>
+                    You understand my silence sometimes better
+                    than my words.
+                </div>
+
+                <div class="tile">
+                    <b>🤍 Today</b>
+                    <br>
+                    One year completed.
+                    A place in my life, permanently yours.
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PAGE 3 -->
+
+    <section class="page">
+
+        <div class="content">
+
+            <div class="eyebrow">
+                02 · things left unsaid
+            </div>
+
+            <h2>
+                Things I don't always say.
+            </h2>
+
+            <p>
+                I love the way your childish side comes out
+                when you're comfortable with me.
+                I love how you give advice, how you care,
+                and how somehow you can tell when I'm sad
+                even when I say nothing.
+            </p>
+
+            <p class="quote">
+                <b>
+                    Maybe I don't always say it perfectly,
+                    but you are one of the people I care about most.
+                </b>
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- PAGE 4 -->
+
+    <section class="page dark">
+
+        <div class="content">
+
+            <div class="eyebrow">
+                03 · a tiny surprise
+            </div>
+
+            <h2>
+                Open this. 💌
+            </h2>
+
+            <p>
+                Don't judge the envelope.
+                I am emotionally attached to CSS right now. 😂
+            </p>
+
+            <div class="envelope-wrap">
+
+                <div
+                    class="envelope"
+                    id="env"
+                    onclick="openLetter()"
+                >
+
+                    <div class="seal">
+                        ♡
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div
+                class="letter"
+                id="letter"
+            >
+
+                <div class="paper">
+
+                    <p class="quote">
+                        “If I could give you one thing…”
+                    </p>
+
+                    <p>
+                        I'd give you the chance to see yourself
+                        through my eyes.
+                    </p>
+
+                    <p>
+                        Maybe then you'd understand your value
+                        in my life.
+                        Maybe then you'd understand how special
+                        you really are and where you stand in my life.
+                    </p>
+
+                    <p>
+                        <b>
+                            So whenever you forget your worth,
+                            try seeing yourself through my eyes. 🤍
+                        </b>
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PAGE 5 -->
+
+    <section class="page light">
+
+        <div class="content">
+
+            <div class="eyebrow">
+                04 · for the girl who loves flowers
+            </div>
+
+            <h2>
+                A flower for you. 🌷
+            </h2>
+
+            <div class="flower">
+
+                <img
+                    src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=800&q=90"
+                    alt="Beautiful flowers"
+                >
+
+            </div>
+
+            <p class="quote">
+                “This flower is beautiful…
+                but still not more beautiful than you.”
+            </p>
+
+            <p>
+                Keep blooming in your own time.
+                You don't have to compare your journey
+                with anyone else's.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- PAGE 6 -->
+
+    <section class="page">
+
+        <div class="content">
+
+            <div class="eyebrow">
+                05 · please remember
+            </div>
+
+            <h2>
+                You are special.
+            </h2>
+
+            <p>
+                Always believe in yourself.
+                You are an absolutely amazing person.
+            </p>
+
+            <p>
+                Never stop loving yourself.
+                Never stop caring for yourself.
+                Never hesitate to do the things you love.
+            </p>
+
+            <p>
+                Laugh loudly.
+                Be childish.
+                Try things.
+                Dream big.
+                Make mistakes.
+                Start again.
+            </p>
+
+            <div class="eyes">
+
+                <p class="quote">
+                    <b>
+                        Just keep being you.
+                    </b>
+                </p>
+
+                <p>
+                    Because the person you are today
+                    is already someone worth celebrating.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PAGE 7 -->
+
+    <section class="page dark">
+
+        <div class="content">
+
+            <div class="eyebrow">
+                06 · official bhoomi report™
+            </div>
+
+            <h2>
+                Important evidence 😂
+            </h2>
+
+            <div class="badges">
+
+                <div class="badge">
+                    Professional overthinker —
+                    <b>✓</b>
+                </div>
+
+                <div class="badge">
+                    Certified childish —
+                    <b>✓</b>
+                </div>
+
+                <div class="badge">
+                    Gives advice —
+                    <b>✓</b>
+                </div>
+
+                <div class="badge">
+                    Actually gives good advice —
+                    <b>annoyingly ✓</b>
+                </div>
+
+                <div class="badge">
+                    Understands brother's mood —
+                    <b>100/10</b>
+                </div>
+
+                <div class="badge">
+                    Replaceable —
+                    <b>NEVER</b>
+                </div>
+
+            </div>
+
+            <p class="quote">
+                “Unfortunately, you're stuck with your brother.” 😂🫂
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- PAGE 8 -->
+
+    <section class="page light">
+
+        <div class="content">
+
+            <div class="eyebrow">
+                07 · a promise
+            </div>
+
+            <h2>
+                You don't have to face
+                everything alone.
+            </h2>
+
+            <p class="quote">
+                I can't promise I'll always know what to say.
+                <br>
+                I can't promise I'll always be able to fix everything.
+            </p>
+
+            <p class="quote">
+                <b>
+                    But I can promise I'll be there.
+                </b>
+            </p>
+
+            <p>
+                Whenever you need someone to listen,
+                I'll listen.
+            </p>
+
+            <p>
+                Whenever you need someone to annoy you…
+                unfortunately, I'm available. 😂
+            </p>
+
+            <p>
+                And whenever you forget how special you are,
+                I'll remind you.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- PAGE 9 -->
+
+    <section class="page final">
+
+        <div class="content">
+
+            <div class="eyebrow">
+                08 · your birthday
+            </div>
+
+            <div class="heart">
+                🤍
+            </div>
+
+            <h1>
+                Happy Birthday,
+                <br>
+                Bhoomi!
+            </h1>
+
+            <p class="quote">
+                May you always find reasons to smile,
+                people who genuinely care,
+                and the courage to choose the things
+                that make your heart happy.
+            </p>
+
+            <p>
+                People will come and go.
+                Life will change.
+                We'll meet hundreds of people.
+            </p>
+
+            <p class="quote">
+                <b>
+                    But some people become a permanent
+                    part of your story.
+                </b>
+            </p>
+
+            <p>
+                You came into my college life as someone
+                I met… and somehow became someone
+                I call my sister.
+            </p>
+
+            <p class="quote">
+                <b>
+                    No one needs to replace anyone.
+                    <br>
+                    You already have your own place
+                    in my life.
+                </b>
+            </p>
+
+            <p class="quote">
+                Happy Birthday,
+                my little sister. 🫂❤️
+            </p>
+
+            <p>
+                — Your Brother
+            </p>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<!-- NAVIGATION -->
+
+<div class="nav">
+
+    <button
+        id="back"
+        onclick="prev()"
+    >
+        ← Back
+    </button>
+
+    <div
+        class="counter"
+        id="counter"
+    >
+        1 / 9
+    </div>
+
+    <button
+        id="next"
+        onclick="next()"
+    >
+        Next →
+    </button>
+
+</div>
+
+
+<script>
+
+/* =========================
+   PAGE NAVIGATION
+========================= */
+
+const pages =
+    [...document.querySelectorAll(".page")];
+
+const dots =
+    document.getElementById("dots");
+
+const counter =
+    document.getElementById("counter");
+
+const back =
+    document.getElementById("back");
+
+const nextButton =
+    document.getElementById("next");
+
+let current = 0;
+
+
+/* CREATE DOTS */
+
+pages.forEach((page,index)=>{
+
+    const dot =
+        document.createElement("i");
+
+    dot.className =
+        "dot" +
+        (index === 0
+            ? " active"
+            : "");
+
+    dots.appendChild(dot);
+
+});
+
+
+/* RENDER PAGE */
+
+function render(){
+
+    pages.forEach((page,index)=>{
+
+        page.classList.remove(
+            "active",
+            "prev"
+        );
+
+        if(index === current){
+
+            page.classList.add(
+                "active"
+            );
+
+        }
+
+        else if(index < current){
+
+            page.classList.add(
+                "prev"
+            );
+
+        }
+
+    });
+
+
+    [...dots.children].forEach(
+        (dot,index)=>{
+
+            dot.classList.toggle(
+                "active",
+                index === current
+            );
+
+        }
+    );
+
+
+    counter.textContent =
+        `${current + 1} / ${pages.length}`;
+
+
+    back.style.visibility =
+        current === 0
+            ? "hidden"
+            : "visible";
+
+
+    nextButton.textContent =
+        current === pages.length - 1
+            ? "Start Again ↺"
+            : "Next →";
+
+}
+
+
+/* NEXT */
+
+function next(){
+
+    if(
+        current ===
+        pages.length - 1
+    ){
+
+        current = 0;
+
+    }else{
+
+        current++;
+
+    }
+
+    render();
+
+}
+
+
+/* BACK */
+
+function prev(){
+
+    if(current > 0){
+
+        current--;
+
+        render();
+
+    }
+
+}
+
+
+/* =========================
+   ENVELOPE
+========================= */
+
+function openLetter(){
+
+    const envelope =
+        document.getElementById("env");
+
+    const letter =
+        document.getElementById("letter");
+
+
+    envelope.classList.add(
+        "open"
+    );
+
+
+    setTimeout(()=>{
+
+        letter.classList.add(
+            "open"
+        );
+
+    },400);
+
+}
+
+
+/* =========================
+   KEYBOARD SUPPORT
+========================= */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            event.key ===
+            "ArrowRight" ||
+            event.key === " "
+        ){
+
+            next();
+
+        }
+
+
+        if(
+            event.key ===
+            "ArrowLeft"
+        ){
+
+            prev();
+
+        }
+
+    }
+);
+
+
+/* =========================
+   MOBILE SWIPE
+========================= */
+
+let startX = 0;
+
+document.addEventListener(
+    "touchstart",
+    function(event){
+
+        startX =
+            event.touches[0].clientX;
+
+    },
+    {
+        passive:true
+    }
+);
+
+
+document.addEventListener(
+    "touchend",
+    function(event){
+
+        const endX =
+            event.changedTouches[0].clientX;
+
+        const difference =
+            endX - startX;
+
+
+        if(
+            Math.abs(difference) > 60
+        ){
+
+            if(difference < 0){
+
+                next();
+
+            }else{
+
+                prev();
+
+            }
+
+        }
+
+    },
+    {
+        passive:true
+    }
+);
+
+
+/* =========================
+   FALLING PETALS
+========================= */
+
+const petals =
+    document.getElementById(
+        "petals"
+    );
+
+for(
+    let i = 0;
+    i < 18;
+    i++
+){
+
+    const petal =
+        document.createElement(
+            "span"
+        );
+
+
+    petal.textContent =
+        [
+            "🌸",
+            "🌷",
+            "✿",
+            "♡"
+        ][i % 4];
+
+
+    petal.style.left =
+        Math.random() * 100 +
+        "vw";
+
+
+    petal.style.setProperty(
+        "--x",
+        (
+            Math.random() * 180 -
+            90
+        ) + "px"
+    );
+
+
+    petal.style.animationDuration =
+        (
+            7 +
+            Math.random() * 8
+        ) + "s";
+
+
+    petal.style.animationDelay =
+        (
+            -Math.random() * 12
+        ) + "s";
+
+
+    petals.appendChild(
+        petal
+    );
+
+}
+
+
+/* INITIAL PAGE */
+
+render();
+
+</script>
+
+</body>
+</html>
